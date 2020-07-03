@@ -6,7 +6,7 @@ var Base64 = require('js-base64').Base64;
 
 const app = express();
 const cors = require("cors");
-const config = require("./config/db");
+// const config = require("./config/db");
 // const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 5000;
@@ -32,7 +32,7 @@ app.listen(port, (res, req) => {
 
 var decrypt = function (encrypted, method, secret, hmac) {
   // if (crypto.createHmac('md5', secret).update(encrypted).digest('hex') == hmac) {
-  var iv = new Buffer.from(encrypted.substr(0, 16), 'base64').toString("hex");
+  var iv = new Buffer.from(encrypted.substr(0, 16), 'base64').toString();
   console.log(iv)
 
   var decryptor = crypto.createDecipheriv(method, secret, iv);
